@@ -49,7 +49,7 @@ class Item {
         uint8_t _upgrade;
         uint8_t _lvl;
         uint8_t _dmg;
-
+    
 };
 
 #endif

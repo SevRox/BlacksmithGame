@@ -28,8 +28,15 @@ class Blacksmith {
             } 
             
             if(item.get_upgrade() < 9) {
-                (get_success_rate() < +SUCCES_RATES[item.get_upgrade()] 
-                ? item.upgrade_item(_upgrade_formula_value) : item.~Item());
+                if(get_success_rate() < +SUCCES_RATES[item.get_upgrade()]) {
+                    std::cout << "Upgrade Succesful! \n";
+                    item.upgrade_item(_upgrade_formula_value) ;
+                    std::cout << item;
+                } else {
+                    std::cout << "Upgrade Failed! \n";
+                    item.~Item();
+                }
+                 
 
                 clear_blacksmith_inv();
             } else {
@@ -64,7 +71,7 @@ class Blacksmith {
 
         int get_success_rate() {
             int rnd = rand() % 100;
-            std::cout << rnd << '\n';
+            // std::cout << rnd << '\n';
             return rnd;
         }
 
